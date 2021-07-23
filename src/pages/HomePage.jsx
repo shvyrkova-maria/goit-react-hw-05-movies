@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/searchMoviesApi';
-import MoviesList from 'components/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList.jsx';
 
 // const Status = {
 //   IDLE: 'idle',

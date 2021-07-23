@@ -1,13 +1,14 @@
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage';
-import MoviesPage from 'pages/MoviesPage';
-import Navigation from 'components/Navigation';
-import MovieDetailsPage from 'pages/MovieDetailsPage';
+import MoviesPage from 'pages/MoviesPage/MoviesPage';
+import Navigation from 'components/Navigation/Navigation';
+import MovieDetailsPage from 'pages/MovieDetailsPage/MovieDetailsPage';
+import { Container } from 'components/Container/Container.styled';
 
 function App() {
   return (
-    <>
+    <Container>
       <Navigation />
       <Switch>
         <Route path="/" exact>
@@ -20,7 +21,7 @@ function App() {
           <MovieDetailsPage />
         </Route>
       </Switch>
-    </>
+    </Container>
   );
 }
 
