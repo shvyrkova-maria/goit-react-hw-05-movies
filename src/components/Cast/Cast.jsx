@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   CastList,
   ActorImg,
@@ -6,24 +7,22 @@ import {
   Character,
 } from 'components/Cast/Cast.styled.js';
 
-// import PropTypes from 'prop-types'
-
 function Cast({ movie }) {
   const cast = movie.credits.cast;
 
   return (
     <>
       <CastList>
-        {cast.map(actor => {
+        {cast.map(({ id, name, profile_path, character }) => {
           return (
-            <li key={actor.id}>
+            <li key={id}>
               <ActorImg
-                src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                alt={actor.name}
+                src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                alt={name}
               />
-              <ActorName>{actor.name}</ActorName>
+              <ActorName>{name}</ActorName>
               <Character>
-                Character: <span>{actor.character}</span>
+                Character: <span>{character}</span>
               </Character>
             </li>
           );
@@ -33,8 +32,8 @@ function Cast({ movie }) {
   );
 }
 
-// Cast.propTypes = {
-
-// }
+Cast.propTypes = {
+  movie: PropTypes.object.isRequired,
+};
 
 export default Cast;

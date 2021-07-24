@@ -1,3 +1,4 @@
+// import { lasy, Suspense } from 'react';
 import { useState, useEffect } from 'react';
 import {
   Route,
@@ -11,7 +12,6 @@ import { fetchMoviesDetails } from 'services/searchMoviesApi';
 import GoBackBtn from 'components/GoBackBtn/GoBackBtn.jsx';
 import Cast from 'components/Cast/Cast.jsx';
 import Reviews from 'components/Reviews/Reviews.jsx';
-
 import {
   CardWrap,
   CardImg,
@@ -21,9 +21,10 @@ import {
   DetailsSubNav,
 } from 'pages/MovieDetailsPage/MovieDetailsPage.styled.js';
 
-// import PropTypes from 'prop-types'
+// const Cast = lasy(() => import('components/Cast/Cast.jsx'));
+// const Reviews = lasy(() => import('components/Reviews/Reviews.jsx'));
 
-function MovieDetailsPage(props) {
+function MovieDetailsPage() {
   const { path, url } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
@@ -76,18 +77,16 @@ function MovieDetailsPage(props) {
         </li>
       </DetailsSubNav>
 
+      {/* <Suspense fallback={<div>LOADER WILL BE HERE</div>}> */}
       <Switch>
         <Route path={`${path}/cast`}>{movie && <Cast movie={movie} />}</Route>
         <Route path={`${path}/reviews`}>
           {movie && <Reviews movie={movie} />}
         </Route>
       </Switch>
+      {/* </Suspense> */}
     </>
   );
 }
-
-// MovieDetailsPage.propTypes = {
-
-// }
 
 export default MovieDetailsPage;

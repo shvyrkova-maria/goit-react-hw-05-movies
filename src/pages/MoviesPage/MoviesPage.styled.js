@@ -8,11 +8,17 @@ export const SearchForm = styled.form`
   margin-bottom: 25px;
   & > input {
     width: 100%;
+    line-height: 1.2;
     outline: none;
     border: none;
+    color: white;
+    background-color: transparent;
   }
   & > button {
     border: none;
     background: none;
+    & > svg {
+      color: white;
+    }
   }
 `;

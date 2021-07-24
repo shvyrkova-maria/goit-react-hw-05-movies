@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   ContentWrap,
   ImgReviewer,
@@ -6,29 +7,27 @@ import {
   ReviewText,
   ReviewerName,
 } from 'components/Reviews/Reviews.styled.js';
-// import PropTypes from 'prop-types'
 
 function Reviews({ movie }) {
   const reviews = movie.reviews.results;
   return (
     <>
       {reviews.length === 0 ? (
-        "sorry, we haven't reviews"
+        "This movie haven't reviews yet"
       ) : (
         <ul>
-          {reviews.map(review => {
+          {reviews.map(({ id, author, author_details, content }) => {
             return (
-              <ReviewItem key={review.id}>
+              <ReviewItem key={id}>
                 <ContentWrap>
                   <ImgReviewer
-                    src={`https://image.tmdb.org/t/p/w500/${review.author_details.avatar_path}`}
-                    alt={review.author}
+                    src={`https://image.tmdb.org/t/p/w500/${author_details.avatar_path}`}
+                    alt={author}
                   />
-                  <ReviewerName>{review.author}</ReviewerName>
-                  {/* <p>{Date(review.created_at)}</p> */}
+                  <ReviewerName>{author}</ReviewerName>
                 </ContentWrap>
 
-                <ReviewText>{review.content}</ReviewText>
+                <ReviewText>{content}</ReviewText>
               </ReviewItem>
             );
           })}
@@ -38,8 +37,8 @@ function Reviews({ movie }) {
   );
 }
 
-// Reviews.propTypes = {
-
-// }
+Reviews.propTypes = {
+  movie: PropTypes.object.isRequired,
+};
 
 export default Reviews;

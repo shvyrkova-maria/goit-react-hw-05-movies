@@ -1,37 +1,23 @@
-// import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { useHistory, useLocation } from 'react-router-dom';
-
 import {
   MoviesGallery,
   MoviePoster,
   MovieTitle,
 } from 'components/MoviesList/MoviesList.styled.js';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function MoviesList({ movies }) {
-  // let location = useLocation();
-  // console.log(location);
-
   return (
     <MoviesGallery>
-      {movies.map(movie => {
+      {movies.map(({ id, poster_path, original_title }) => {
         return (
-          <li key={movie.id}>
-            <Link
-              to={{
-                pathname: `/movies/${movie.id}`,
-                // state: query,
-              }}
-            >
-              {/* <Link to={`/movies/${movie.id}`}> */}
+          <li key={id}>
+            <Link to={`/movies/${id}`}>
               <MoviePoster
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.original_title}
-                id={movie.id}
+                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                alt={original_title}
               />
-
-              <MovieTitle>{movie.original_title}</MovieTitle>
+              <MovieTitle>{original_title}</MovieTitle>
             </Link>
           </li>
         );
@@ -40,7 +26,7 @@ function MoviesList({ movies }) {
   );
 }
 
-// MoviesList.propTypes = {
-
-// }
+MoviesList.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
 export default MoviesList;
