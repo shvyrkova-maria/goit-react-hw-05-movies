@@ -6,6 +6,7 @@ import {
   useParams,
   useRouteMatch,
 } from 'react-router-dom';
+
 import { fetchMoviesDetails } from 'services/searchMoviesApi';
 import GoBackBtn from 'components/GoBackBtn/GoBackBtn.jsx';
 import Cast from 'components/Cast/Cast.jsx';
@@ -46,13 +47,10 @@ function MovieDetailsPage(props) {
           <DetailsWrap>
             <MovieTitle>{movie.original_title}</MovieTitle>
             <MovieDetails>
-              Score:
-              <span>{movie.vote_average}</span>
+              Score: <span>{movie.vote_average}</span>
             </MovieDetails>
-
             <MovieDetails>
-              Overview:
-              <span>{movie.overview}</span>
+              Overview: <span>{movie.overview}</span>
             </MovieDetails>
 
             <MovieDetails>

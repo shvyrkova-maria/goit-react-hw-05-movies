@@ -20,7 +20,6 @@ function Cast({ movie }) {
               <ActorImg
                 src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
                 alt={actor.name}
-                width="100"
               />
               <ActorName>{actor.name}</ActorName>
               <Character>

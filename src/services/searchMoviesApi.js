@@ -12,7 +12,7 @@ export async function fetchMoviesByQuery(query) {
   const response = await axios.get(
     `/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`,
   );
-  console.log(response.data.results);
+  // console.log(response.data.results);
   return response.data.results;
 }
 
@@ -20,7 +20,7 @@ export async function fetchMoviesDetails(movieId) {
   const { data } = await axios.get(
     `/movie/${movieId}?api_key=${API_KEY}&language=en-US&append_to_response=reviews,credits`,
   );
-  console.log(data);
+  // console.log(data);
   return data;
 }
 

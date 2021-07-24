@@ -1,4 +1,7 @@
+// import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+// import { useHistory, useLocation } from 'react-router-dom';
+
 import {
   MoviesGallery,
   MoviePoster,
@@ -6,19 +9,22 @@ import {
 } from 'components/MoviesList/MoviesList.styled.js';
 // import PropTypes from 'prop-types'
 
-function MoviesList({ movies, query }) {
+function MoviesList({ movies }) {
+  // let location = useLocation();
+  // console.log(location);
+
   return (
     <MoviesGallery>
       {movies.map(movie => {
         return (
           <li key={movie.id}>
-            {/* <Link
+            <Link
               to={{
                 pathname: `/movies/${movie.id}`,
-                search: `?query=${query}`,
+                // state: query,
               }}
-            > */}
-            <Link to={`/movies/${movie.id}`}>
+            >
+              {/* <Link to={`/movies/${movie.id}`}> */}
               <MoviePoster
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.original_title}
