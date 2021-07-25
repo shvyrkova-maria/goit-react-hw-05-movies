@@ -15,6 +15,6 @@ export const MovieTitle = styled.h2`
   color: grey;
 `;
 export const MoviePoster = styled.img`
-  min-height: 397px;
+  height: 397px;
   /* object-fit: cover; */
 `;

@@ -11,14 +11,14 @@ export const SearchForm = styled.form`
     line-height: 1.2;
     outline: none;
     border: none;
-    color: white;
+    color: red;
     background-color: transparent;
   }
   & > button {
     border: none;
     background: none;
     & > svg {
-      color: white;
+      color: red;
     }
   }
 `;

@@ -17,7 +17,7 @@ export const DetailsWrap = styled.div`
   padding: 10px;
 `;
 
-export const MovieTitle = styled.h2`
+export const Title = styled.h2`
   font-size: 18px;
   margin-bottom: 5px;
   font-weight: 700;
@@ -25,7 +25,7 @@ export const MovieTitle = styled.h2`
   color: grey;
 `;
 
-export const MovieDetails = styled.p`
+export const Details = styled.p`
   font-size: 18px;
   margin-bottom: 5px;
   font-weight: 400;
@@ -33,21 +33,5 @@ export const MovieDetails = styled.p`
   & > span {
     padding-left: 5px;
     color: black;
-  }
-`;
-
-export const DetailsSubNav = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  & > li {
-    font-weight: 700;
-    text-transform: uppercase;
-    color: grey;
-    &:hover,
-    &:focus {
-      color: red;
-    }
   }
 `;

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IMG_URL } from 'constants/movieApi.js';
+import defaultImage from 'image/user-placeholder.jpg';
 import {
   CastList,
   ActorImg,
   ActorName,
   Character,
-} from 'components/Cast/Cast.styled.js';
+} from 'pages/Cast/Cast.styled.js';
 
 function Cast({ movie }) {
   const cast = movie.credits.cast;
@@ -14,16 +16,14 @@ function Cast({ movie }) {
     <>
       <CastList>
         {cast.map(({ id, name, profile_path, character }) => {
+          const actor = profile_path
+            ? `${IMG_URL}${profile_path}`
+            : defaultImage;
           return (
             <li key={id}>
-              <ActorImg
-                src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-                alt={name}
-              />
+              <ActorImg src={actor} alt={name} />
               <ActorName>{name}</ActorName>
-              <Character>
-                Character: <span>{character}</span>
-              </Character>
+              <Character>{character}</Character>
             </li>
           );
         })}

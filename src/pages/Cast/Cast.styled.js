@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 export const CastList = styled.ul`
   display: grid;
   place-items: center;
-  grid-template-rows: repeat(1, 1fr);
+  /* grid-template-rows: repeat(1, 1fr); */
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 15px;
   & > li {
     width: 100%;
-    height: 280px;
+    min-height: 300px;
     text-align: center;
     border: 1px solid grey;
     padding: 10px;

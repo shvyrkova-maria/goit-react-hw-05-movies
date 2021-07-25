@@ -15,7 +15,7 @@ function Navigation() {
           </NavLinkStyled>
         </NavListItem>
         <NavListItem>
-          <NavLinkStyled to="/movies" exact activeStyle={{ color: 'red' }}>
+          <NavLinkStyled to="/movies" activeStyle={{ color: 'red' }}>
             Movies
           </NavLinkStyled>
         </NavListItem>

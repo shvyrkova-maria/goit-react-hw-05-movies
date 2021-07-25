@@ -1,23 +1,19 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Navigation from 'components/Navigation/Navigation';
+import Spinner from 'components/Spinner/Spinner.jsx';
+import Toast from 'components/Toast/Toast';
+import Navigation from 'components/Navigation/Navigation.jsx';
 import { Container } from 'components/Container/Container.styled';
-// import HomePage from 'pages/HomePage';
-// import MoviesPage from 'pages/MoviesPage/MoviesPage';
-// import MovieDetailsPage from 'pages/MovieDetailsPage/MovieDetailsPage';
 
 const HomePage = lazy(() =>
-  import('pages/HomePage.jsx' /* webpackChunkName: "home-page" */),
+  import('pages/HomePage.jsx' /* webpackChunkName: "home" */),
 );
 const MoviesPage = lazy(() =>
-  import(
-    'pages/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movie-page" */
-  ),
+  import('pages/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movie" */),
 );
-
 const MovieDetailsPage = lazy(() =>
   import(
-    'pages/MovieDetailsPage/MovieDetailsPage.jsx' /* webpackChunkName: "movie-details-page" */
+    'pages/MovieDetailsPage/MovieDetailsPage.jsx' /* webpackChunkName: "movie-details" */
   ),
 );
 
@@ -25,7 +21,7 @@ function App() {
   return (
     <Container>
       <Navigation />
-      <Suspense fallback={<div>LOADER WILL BE HERE</div>}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <Route path="/" exact>
             <HomePage />
@@ -36,8 +32,12 @@ function App() {
           <Route path="/movies/:movieId">
             <MovieDetailsPage />
           </Route>
+          <Route>
+            <HomePage />
+          </Route>
         </Switch>
       </Suspense>
+      <Toast />
     </Container>
   );
 }
