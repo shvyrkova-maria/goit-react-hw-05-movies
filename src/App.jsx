@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Spinner from 'components/Spinner/Spinner.jsx';
-import Toast from 'components/Toast/Toast';
+import Toast from 'components/Toast/Toast.jsx';
 import Navigation from 'components/Navigation/Navigation.jsx';
 import { Container } from 'components/Container/Container.styled';
 

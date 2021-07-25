@@ -5,28 +5,34 @@ import { BsSearch } from 'react-icons/bs';
 import { fetchMoviesByQuery } from 'services/searchMoviesApi.js';
 import Spinner from 'components/Spinner/Spinner.jsx';
 import MoviesList from 'components/MoviesList/MoviesList.jsx';
+import Pagination from 'components/Pagination/Pagination.jsx';
+
 import { Status } from 'constants/requestStatus.js';
 import { SearchForm } from 'pages/MoviesPage/MoviesPage.styled.js';
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
   const [error, setError] = useState('');
   const [status, setStatus] = useState(Status.IDLE);
   const history = useHistory();
   const location = useLocation();
 
-  //=================================== v2
   const searchQuery = new URLSearchParams(location.search).get('query');
+  const page = new URLSearchParams(location.search).get('page') || 1;
 
   useEffect(() => {
     if (!searchQuery) return;
     setStatus(Status.PENDING);
     async function getMovies() {
       try {
-        await fetchMoviesByQuery(searchQuery).then(movies => {
-          if (movies.length === 0) toast.error('No matches');
-          setMovies(movies);
-        });
+        await fetchMoviesByQuery(searchQuery, Number(page)).then(
+          ({ results, total_pages }) => {
+            if (results.length === 0) toast.error('No matches');
+            setMovies(results);
+            setTotalPages(total_pages);
+          },
+        );
         setStatus(Status.RESOLVED);
       } catch (err) {
         setError(err.message);
@@ -34,8 +40,7 @@ function MoviesPage() {
       }
     }
     getMovies();
-  }, [searchQuery]);
-  //=================================== v2
+  }, [searchQuery, page]);
 
   const handleBtnClick = event => {
     event.preventDefault();
@@ -44,7 +49,10 @@ function MoviesPage() {
       toast.error('Enter movie name');
       return;
     }
-    history.push({ ...location, search: `query=${searchQuery}` });
+    history.push({
+      ...location,
+      search: `query=${searchQuery}&page=1`,
+    });
   };
 
   return (
@@ -59,20 +67,9 @@ function MoviesPage() {
       {status === Status.PENDING && <Spinner />}
       {status === Status.RESOLVED && <MoviesList movies={movies} />}
       {status === Status.REJECTED && <h1>{error}</h1>}
+      <Pagination pages={totalPages} />
     </div>
   );
 }
 
 export default MoviesPage;
-
-//=================================== v1
-// useEffect(() => {
-//   const { search } = location;
-//   if (!search) return;
-
-//   if (search) {
-//     const searchQuery = new URLSearchParams(search).get('query');
-//     fetchMoviesByQuery(searchQuery).then(setMovies);
-//   }
-// }, [location]);
-//=================================== v1
