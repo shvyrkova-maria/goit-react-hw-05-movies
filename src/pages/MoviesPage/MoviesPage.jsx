@@ -64,6 +64,7 @@ function MoviesPage() {
             type="text"
             name="search"
             autoFocus
+            autoComplete="off"
             placeholder="Search movie"
           />
           <button type="submit">
