@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 
 export const ContentWrap = styled.div`
   display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 `;
 
 export const ImgReviewer = styled.img`
@@ -18,16 +20,18 @@ export const ReviewItem = styled.li`
   padding: 15px;
 `;
 
-export const ReviewText = styled.p`
-  font-size: 18px;
-  font-weight: 400;
-  color: black;
-`;
-
 export const ReviewerName = styled.h2`
   font-size: 16px;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  color: var(--main-color);
   line-height: 1.2;
   text-align: left;
   font-weight: 700;
+`;
+
+export const ReviewText = styled.p`
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: black;
 `;

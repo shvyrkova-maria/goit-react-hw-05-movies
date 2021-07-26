@@ -8,7 +8,7 @@ import {
   ReviewItem,
   ReviewText,
   ReviewerName,
-} from 'pages/Reviews/Reviews.styled.js';
+} from 'pages/Reviews/Reviews.styled';
 
 function Reviews({ movie }) {
   const reviews = movie.reviews.results;
@@ -19,9 +19,12 @@ function Reviews({ movie }) {
       ) : (
         <ul>
           {reviews.map(({ id, author, author_details, content }) => {
-            const authorImg = author_details.avatar_path.startsWith('/https')
-              ? author_details.avatar_path.slice(1)
-              : `${IMG_URL}${author_details.avatar_path}`;
+            const authorImg =
+              author_details.avatar_path === null
+                ? false
+                : author_details.avatar_path.startsWith('/https')
+                ? author_details.avatar_path.slice(1)
+                : `${IMG_URL}${author_details.avatar_path}`;
 
             return (
               <ReviewItem key={id}>

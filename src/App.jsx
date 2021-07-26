@@ -6,7 +6,7 @@ import Navigation from 'components/Navigation/Navigation.jsx';
 import { Container } from 'components/Container/Container.styled';
 
 const HomePage = lazy(() =>
-  import('pages/HomePage.jsx' /* webpackChunkName: "home" */),
+  import('pages/HomePage/HomePage.jsx' /* webpackChunkName: "home" */),
 );
 const MoviesPage = lazy(() =>
   import('pages/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movie" */),
@@ -19,26 +19,28 @@ const MovieDetailsPage = lazy(() =>
 
 function App() {
   return (
-    <Container>
+    <>
       <Navigation />
-      <Suspense fallback={<Spinner />}>
-        <Switch>
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <Route path="/movies" exact>
-            <MoviesPage />
-          </Route>
-          <Route path="/movies/:movieId">
-            <MovieDetailsPage />
-          </Route>
-          <Route>
-            <HomePage />
-          </Route>
-        </Switch>
-      </Suspense>
-      <Toast />
-    </Container>
+      <Container>
+        <Suspense fallback={<Spinner />}>
+          <Switch>
+            <Route path="/" exact>
+              <HomePage />
+            </Route>
+            <Route path="/movies" exact>
+              <MoviesPage />
+            </Route>
+            <Route path="/movies/:movieId">
+              <MovieDetailsPage />
+            </Route>
+            <Route>
+              <HomePage />
+            </Route>
+          </Switch>
+        </Suspense>
+        <Toast />
+      </Container>
+    </>
   );
 }
 

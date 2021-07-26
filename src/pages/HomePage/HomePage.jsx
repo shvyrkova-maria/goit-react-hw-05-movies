@@ -8,8 +8,8 @@ import { Status } from 'constants/requestStatus.js';
 
 function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState('');
   const [totalPages, setTotalPages] = useState(0);
+  const [error, setError] = useState('');
   const [status, setStatus] = useState(Status.PENDING);
   const location = useLocation();
 
@@ -31,15 +31,15 @@ function HomePage() {
       }
     }
     getMovies();
-    // window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page]);
 
   return (
     <>
       {status === Status.PENDING && <Spinner />}
       {status === Status.RESOLVED && <MoviesList movies={movies} />}
+      {status === Status.RESOLVED && <Pagination pages={totalPages} />}
       {status === Status.REJECTED && <h1>{error}</h1>}
-      <Pagination pages={totalPages} />
     </>
   );
 }

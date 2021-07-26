@@ -1,7 +1,11 @@
 import { lazy, Suspense } from 'react';
-import { Route, NavLink, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Spinner from 'components/Spinner/Spinner.jsx';
-import { DetailsSubNav } from 'components/MovieDetailsNav/MovieDetailsNav.styled.js';
+import {
+  DetailsSubNav,
+  NavItem,
+  NavLinkStyled,
+} from 'components/MovieDetailsNav/MovieDetailsNav.styled';
 
 const Cast = lazy(() =>
   import('pages/Cast/Cast.jsx' /* webpackChunkName: "cast" */),
@@ -15,16 +19,28 @@ function MovieDetailsNav({ movie }) {
   return (
     <div>
       <DetailsSubNav>
-        <li>
-          <NavLink to={`${url}/cast`} activeStyle={{ color: 'red' }}>
+        <NavItem>
+          <NavLinkStyled
+            to={`${url}/cast`}
+            activeStyle={{
+              color: '#ea0042',
+              borderBottom: '3px solid var(--accent-color)',
+            }}
+          >
             Cast
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={`${url}/reviews`} activeStyle={{ color: 'red' }}>
+          </NavLinkStyled>
+        </NavItem>
+        <NavItem>
+          <NavLinkStyled
+            to={`${url}/reviews`}
+            activeStyle={{
+              color: '#ea0042',
+              borderBottom: '3px solid var(--accent-color)',
+            }}
+          >
             Reviews
-          </NavLink>
-        </li>
+          </NavLinkStyled>
+        </NavItem>
       </DetailsSubNav>
 
       <Suspense fallback={<Spinner />}>

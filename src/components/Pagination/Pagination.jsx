@@ -1,3 +1,4 @@
+import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import { useHistory, useLocation } from 'react-router';
 import ReactPaginate from 'react-paginate';
 
@@ -23,17 +24,18 @@ function Pagination({ pages }) {
   return (
     <div className={s.wrap}>
       <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
+        previousLabel={<BiLeftArrow className={s.arrow} />}
+        nextLabel={<BiRightArrow className={s.arrow} />}
         breakLabel={'...'}
-        //   breakClassName={'break-me'}
+        breakClassName={s.break}
         pageCount={pages}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
         containerClassName={s.container}
         pageClassName={s.page}
-        //   activeClassName={'s.active'}
+        activeClassName={s.active}
+        pageLinkClassName={s.link}
       />
     </div>
   );

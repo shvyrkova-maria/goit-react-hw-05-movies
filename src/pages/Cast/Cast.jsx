@@ -7,7 +7,7 @@ import {
   ActorImg,
   ActorName,
   Character,
-} from 'pages/Cast/Cast.styled.js';
+} from 'pages/Cast/Cast.styled';
 
 function Cast({ movie }) {
   const cast = movie.credits.cast;

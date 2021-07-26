@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { BsSearch } from 'react-icons/bs';
+import { FaSearch } from 'react-icons/fa';
 import { fetchMoviesByQuery } from 'services/searchMoviesApi.js';
 import Spinner from 'components/Spinner/Spinner.jsx';
 import MoviesList from 'components/MoviesList/MoviesList.jsx';
 import Pagination from 'components/Pagination/Pagination.jsx';
 
 import { Status } from 'constants/requestStatus.js';
-import { SearchForm } from 'pages/MoviesPage/MoviesPage.styled.js';
+import { SearchForm, FormWrap } from 'pages/MoviesPage/MoviesPage.styled';
 
 function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -40,6 +40,7 @@ function MoviesPage() {
       }
     }
     getMovies();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [searchQuery, page]);
 
   const handleBtnClick = event => {
@@ -56,19 +57,25 @@ function MoviesPage() {
   };
 
   return (
-    <div>
-      <SearchForm onSubmit={handleBtnClick}>
-        <input type="text" name="search" autoFocus placeholder="Search movie" />
-        <button type="submit">
-          <BsSearch size={18} />
-        </button>
-      </SearchForm>
-
+    <>
+      <FormWrap>
+        <SearchForm onSubmit={handleBtnClick}>
+          <input
+            type="text"
+            name="search"
+            autoFocus
+            placeholder="Search movie"
+          />
+          <button type="submit">
+            <FaSearch size={18} />
+          </button>
+        </SearchForm>
+      </FormWrap>
       {status === Status.PENDING && <Spinner />}
       {status === Status.RESOLVED && <MoviesList movies={movies} />}
+      {status === Status.RESOLVED && <Pagination pages={totalPages} />}
       {status === Status.REJECTED && <h1>{error}</h1>}
-      <Pagination pages={totalPages} />
-    </div>
+    </>
   );
 }
 

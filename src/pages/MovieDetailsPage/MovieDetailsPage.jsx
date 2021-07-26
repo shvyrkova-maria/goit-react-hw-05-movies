@@ -14,7 +14,8 @@ import {
   DetailsWrap,
   Title,
   Details,
-} from 'pages/MovieDetailsPage/MovieDetailsPage.styled.js';
+  CardContainer,
+} from 'pages/MovieDetailsPage/MovieDetailsPage.styled';
 
 function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -48,29 +49,31 @@ function MovieDetailsPage() {
       {status === Status.RESOLVED && (
         <>
           <GoBackBtn />
-          <CardWrap>
-            <div>
-              <CardImg src={poster} alt={movie.original_title} />
-            </div>
+          <CardContainer>
+            <CardWrap>
+              <div>
+                <CardImg src={poster} alt={movie.original_title} />
+              </div>
 
-            <DetailsWrap>
-              <Title>{movie.original_title}</Title>
+              <DetailsWrap>
+                <Title>{movie.original_title}</Title>
 
-              <Details>
-                Score: <span>{movie.vote_average}</span>
-              </Details>
-              <Details>
-                Overview: <span>{movie.overview}</span>
-              </Details>
-              <Details>
-                Genres:
-                {movie.genres.map(g => {
-                  return <span key={g.id}>{g.name}</span>;
-                })}
-              </Details>
-            </DetailsWrap>
-          </CardWrap>
-          <MovieDetailsNav movie={movie} />
+                <Details>
+                  Score: <span>{movie.vote_average}</span>
+                </Details>
+                <Details>
+                  Overview: <span>{movie.overview}</span>
+                </Details>
+                <Details>
+                  Genres:
+                  {movie.genres.map(g => {
+                    return <span key={g.id}>{g.name}</span>;
+                  })}
+                </Details>
+              </DetailsWrap>
+            </CardWrap>
+            <MovieDetailsNav movie={movie} />
+          </CardContainer>
         </>
       )}
 

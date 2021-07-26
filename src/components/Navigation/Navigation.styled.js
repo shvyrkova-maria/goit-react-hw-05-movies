@@ -1,8 +1,20 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/styled/macro';
 import { NavLink } from 'react-router-dom';
+
+export const Нeader = styled.header`
+  top: 0;
+  left: 0;
+  position: sticky;
+
+  z-index: 700;
+  box-shadow: var(--main-shadow);
+  background-color: #1f1b2e;
+  margin-bottom: 25px;
+`;
 
 export const NavList = styled.ul`
   display: flex;
+  align-items: center;
   padding-top: 25px;
   padding-bottom: 25px;
 `;
@@ -14,11 +26,12 @@ export const NavListItem = styled.li`
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 900;
   text-transform: uppercase;
-  color: grey;
+  color: Var(--base-color);
   &:hover,
   &:focus {
-    color: red;
+    color: var(--accent-color);
   }
 `;

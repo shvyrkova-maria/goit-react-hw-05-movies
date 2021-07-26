@@ -4,11 +4,11 @@ function Toast() {
   return (
     <Toaster
       position="top-right"
-      containerStyle={{ top: 80 }}
+      containerStyle={{ top: 100 }}
       toastOptions={{
         style: {
-          border: '1px solid #3f51b5',
-          padding: '12px',
+          border: '1px solid var(--main-color)',
+          padding: '14px',
           color: '#212121',
         },
       }}
