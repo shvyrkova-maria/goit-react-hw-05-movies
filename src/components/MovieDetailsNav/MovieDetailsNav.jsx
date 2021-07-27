@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch, useLocation } from 'react-router-dom';
 import Spinner from 'components/Spinner/Spinner.jsx';
 import {
   DetailsSubNav,
@@ -16,12 +16,13 @@ const Reviews = lazy(() =>
 
 function MovieDetailsNav({ movie }) {
   const { path, url } = useRouteMatch();
+  const location = useLocation();
   return (
     <div>
       <DetailsSubNav>
         <NavItem>
           <NavLinkStyled
-            to={`${url}/cast`}
+            to={{ pathname: `${url}/cast`, state: { from: location } }}
             activeStyle={{
               color: '#ea0042',
               borderBottom: '3px solid var(--accent-color)',
@@ -32,7 +33,7 @@ function MovieDetailsNav({ movie }) {
         </NavItem>
         <NavItem>
           <NavLinkStyled
-            to={`${url}/reviews`}
+            to={{ pathname: `${url}/reviews`, state: { from: location } }}
             activeStyle={{
               color: '#ea0042',
               borderBottom: '3px solid var(--accent-color)',
