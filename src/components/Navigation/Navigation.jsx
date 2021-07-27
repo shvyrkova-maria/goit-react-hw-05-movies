@@ -4,7 +4,7 @@ import {
   NavLinkStyled,
   Нeader,
 } from 'components/Navigation/Navigation.styled.js';
-import { Container } from 'components/Container/Container.styled';
+import { Container } from 'components/Container/Container.styled.js';
 
 function Navigation() {
   return (
