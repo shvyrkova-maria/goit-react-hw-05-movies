@@ -20,8 +20,11 @@ export const NavLinkStyled = styled(NavLink)`
   text-transform: uppercase;
   font-size: 20px;
   color: var(--base-color);
-  &:hover,
+  &:hover {
+    color: var(--accent-color);
+  }
   &:focus {
     color: var(--accent-color);
+    border-bottom: 3px solid var(--accent-color);
   }
 `;

@@ -2,6 +2,7 @@ import styled from '@emotion/styled/macro';
 
 export const CardContainer = styled.div`
   padding: 20px;
+  margin-bottom: 40px;
   border: 1px solid white;
   background-color: white;
   border-radius: 10px;

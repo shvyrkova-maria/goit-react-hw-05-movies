@@ -20,26 +20,10 @@ function MovieDetailsNav({ movie }) {
     <div>
       <DetailsSubNav>
         <NavItem>
-          <NavLinkStyled
-            to={`${url}/cast`}
-            activeStyle={{
-              color: '#ea0042',
-              borderBottom: '3px solid var(--accent-color)',
-            }}
-          >
-            Cast
-          </NavLinkStyled>
+          <NavLinkStyled to={`${url}/cast`}>Cast</NavLinkStyled>
         </NavItem>
         <NavItem>
-          <NavLinkStyled
-            to={`${url}/reviews`}
-            activeStyle={{
-              color: '#ea0042',
-              borderBottom: '3px solid var(--accent-color)',
-            }}
-          >
-            Reviews
-          </NavLinkStyled>
+          <NavLinkStyled to={`${url}/reviews`}>Reviews</NavLinkStyled>
         </NavItem>
       </DetailsSubNav>
 
