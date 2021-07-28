@@ -5,10 +5,11 @@ export const FormWrap = styled.div`
   text-align: center;
   justify-content: center;
   margin-bottom: 25px;
-  /* position: fixed; */
-  position: sticky;
+
+  position: fixed;
+  /* position: sticky; */
   top: 2%;
-  /* left: 40%; */
+  left: 40%;
   z-index: 770;
 `;
 
@@ -19,6 +20,7 @@ export const SearchForm = styled.form`
   border: 3px solid var(--accent-color);
   border-radius: 7px;
   overflow: hidden;
+
   & > input {
     width: 100%;
     padding-left: 8px;
