@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import queryString from 'query-string';
 import { FaSearch } from 'react-icons/fa';
 import { fetchMoviesByQuery } from 'services/searchMoviesApi.js';
 import Spinner from 'components/Spinner/Spinner.jsx';
@@ -17,8 +18,8 @@ function MoviesPage() {
   const history = useHistory();
   const location = useLocation();
 
-  const searchQuery = new URLSearchParams(location.search).get('query');
-  const page = Number(new URLSearchParams(location.search).get('page'));
+  const searchQuery = queryString.parse(location.search).query;
+  const page = Number(queryString.parse(location.search).page);
 
   useEffect(() => {
     if (!searchQuery) return;

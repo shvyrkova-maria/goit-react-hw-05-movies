@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
+import queryString from 'query-string';
 import { fetchTrendingMovies } from 'services/searchMoviesApi.js';
 import Spinner from 'components/Spinner/Spinner.jsx';
 import MoviesList from 'components/MoviesList/MoviesList.jsx';
@@ -13,8 +14,8 @@ function HomePage() {
   const [status, setStatus] = useState(Status.PENDING);
   const location = useLocation();
 
-  const page = Number(new URLSearchParams(location.search).get('page')) || 1;
-
+  const page = Number(queryString.parse(location.search).page) || 1;
+  console.log(queryString.parse(location.search).page, page);
   useEffect(() => {
     async function getMovies() {
       try {
