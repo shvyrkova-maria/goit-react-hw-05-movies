@@ -6,11 +6,11 @@ export const FormWrap = styled.div`
   justify-content: center;
   margin-bottom: 25px;
 
-  position: fixed;
+  /* position: fixed; */
   /* position: sticky; */
-  top: 2%;
+  /* top: 2%;
   left: 40%;
-  z-index: 770;
+  z-index: 770; */
 `;
 
 export const SearchForm = styled.form`
