@@ -14,8 +14,8 @@ function HomePage() {
   const [status, setStatus] = useState(Status.PENDING);
   const location = useLocation();
 
-  const page = Number(queryString.parse(location.search).page) || 1;
-  console.log(queryString.parse(location.search).page, page);
+  let page = Number(queryString.parse(location.search).page) || 1;
+
   useEffect(() => {
     async function getMovies() {
       try {

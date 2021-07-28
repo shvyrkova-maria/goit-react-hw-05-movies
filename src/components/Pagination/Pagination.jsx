@@ -9,20 +9,18 @@ function Pagination({ pages, page }) {
   const location = useLocation();
 
   const handlePageClick = data => {
-    let selectedPage = data.selected;
-    console.log('selectedPage', selectedPage);
+    let selectedPage = data.selected + 1;
 
     if (location.search.includes('query')) {
       const searchQuery = queryString.parse(location.search).query;
       history.push({
         ...location,
-        search: `query=${searchQuery}&page=${selectedPage + 1}`,
+        search: `query=${searchQuery}&page=${selectedPage}`,
       });
     } else {
-      console.log('selectedPage', selectedPage);
       history.push({
         ...location,
-        search: `page=${selectedPage + 1}`,
+        search: `page=${selectedPage}`,
       });
     }
   };
@@ -43,9 +41,8 @@ function Pagination({ pages, page }) {
         activeClassName={s.active}
         pageLinkClassName={s.link}
         initialPage={page - 1}
-
-        // disableInitialCallback={true}
-        // forcePage={0}
+        disableInitialCallback={true}
+        forcePage={page - 1}
       />
     </div>
   );
