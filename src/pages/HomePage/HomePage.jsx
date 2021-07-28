@@ -13,17 +13,14 @@ function HomePage() {
   const [status, setStatus] = useState(Status.PENDING);
   const location = useLocation();
 
-  const page = new URLSearchParams(location.search).get('page') || 1;
+  const page = Number(new URLSearchParams(location.search).get('page')) || 1;
 
   useEffect(() => {
     async function getMovies() {
       try {
-        await fetchTrendingMovies(Number(page)).then(
-          ({ results, total_pages }) => {
-            setMovies(results);
-            setTotalPages(total_pages);
-          },
-        );
+        const { results, total_pages } = await fetchTrendingMovies(page);
+        setMovies(results);
+        setTotalPages(total_pages);
         setStatus(Status.RESOLVED);
       } catch (err) {
         setError(err.message);
@@ -38,7 +35,9 @@ function HomePage() {
     <>
       {status === Status.PENDING && <Spinner />}
       {status === Status.RESOLVED && <MoviesList movies={movies} />}
-      {status === Status.RESOLVED && <Pagination pages={totalPages} />}
+      {status === Status.RESOLVED && (
+        <Pagination pages={totalPages} page={page} />
+      )}
       {status === Status.REJECTED && <h1>{error}</h1>}
     </>
   );

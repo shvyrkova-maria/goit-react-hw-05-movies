@@ -6,7 +6,6 @@ import { fetchMoviesByQuery } from 'services/searchMoviesApi.js';
 import Spinner from 'components/Spinner/Spinner.jsx';
 import MoviesList from 'components/MoviesList/MoviesList.jsx';
 import Pagination from 'components/Pagination/Pagination.jsx';
-
 import { Status } from 'constants/requestStatus.js';
 import { SearchForm, FormWrap } from 'pages/MoviesPage/MoviesPage.styled';
 
@@ -19,20 +18,20 @@ function MoviesPage() {
   const location = useLocation();
 
   const searchQuery = new URLSearchParams(location.search).get('query');
-  const page = new URLSearchParams(location.search).get('page') || 1;
+  const page = Number(new URLSearchParams(location.search).get('page'));
 
   useEffect(() => {
     if (!searchQuery) return;
     setStatus(Status.PENDING);
     async function getMovies() {
       try {
-        await fetchMoviesByQuery(searchQuery, Number(page)).then(
-          ({ results, total_pages }) => {
-            if (results.length === 0) toast.error('No matches');
-            setMovies(results);
-            setTotalPages(total_pages);
-          },
+        const { results, total_pages } = await fetchMoviesByQuery(
+          searchQuery,
+          page,
         );
+        if (results.length === 0) toast.error('No matches');
+        setMovies(results);
+        setTotalPages(total_pages);
         setStatus(Status.RESOLVED);
       } catch (err) {
         setError(err.message);
@@ -52,7 +51,7 @@ function MoviesPage() {
     }
     history.push({
       ...location,
-      search: `query=${searchQuery}&page=1`,
+      search: `query=${searchQuery}&page=${1}`,
     });
   };
 
@@ -74,7 +73,9 @@ function MoviesPage() {
       </FormWrap>
       {status === Status.PENDING && <Spinner />}
       {status === Status.RESOLVED && <MoviesList movies={movies} />}
-      {status === Status.RESOLVED && <Pagination pages={totalPages} />}
+      {status === Status.RESOLVED && (
+        <Pagination pages={totalPages} page={page} />
+      )}
       {status === Status.REJECTED && <h1>{error}</h1>}
     </>
   );
