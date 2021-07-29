@@ -5,12 +5,11 @@ export const FormWrap = styled.div`
   text-align: center;
   justify-content: center;
   margin-bottom: 25px;
-
   /* position: fixed; */
   /* position: sticky; */
-  /* top: 2%;
-  left: 40%;
-  z-index: 770; */
+  /* top: 2%; */
+  /* left: 40%; */
+  /* z-index: 770;  */
 `;
 
 export const SearchForm = styled.form`

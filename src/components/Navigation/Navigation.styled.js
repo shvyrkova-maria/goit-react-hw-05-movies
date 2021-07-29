@@ -17,7 +17,6 @@ export const NavList = styled.ul`
   align-items: center;
   padding-top: 25px;
   padding-bottom: 25px;
-  z-index: 1000;
 `;
 
 export const NavListItem = styled.li`

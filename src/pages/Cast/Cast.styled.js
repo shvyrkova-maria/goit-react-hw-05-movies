@@ -4,10 +4,10 @@ export const CastList = styled.ul`
   display: grid;
   place-items: center;
   grid-template-rows: repeat(1, 1fr);
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 12px;
   & > li {
-    max-width: 250px;
+    width: 160px;
     height: 100%;
     text-align: center;
     border: 1px solid var(--main-color);
@@ -19,7 +19,7 @@ export const CastList = styled.ul`
 export const ActorImg = styled.img`
   display: inline-block;
   width: 100%;
-  height: 250px;
+  height: 200px;
   margin-bottom: 5px;
   object-fit: cover;
 `;

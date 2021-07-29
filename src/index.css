@@ -11,10 +11,7 @@
 body {
   margin: 0;
   color: black;
-  background: linear-gradient(to right, #201d3f, #260d1b, #202a31);
   background: linear-gradient(to right, #1f2e4b, #567599, #1f2e4b);
-  /* background: linear-gradient(to right, #1b2441, #1d4b77, #1b2441); */
-
   font-family: 'Poppins', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 

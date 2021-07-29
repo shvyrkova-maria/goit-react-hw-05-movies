@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Spinner from 'components/Spinner/Spinner.jsx';
 import Toast from 'components/Toast/Toast.jsx';
 import Navigation from 'components/Navigation/Navigation.jsx';
@@ -33,9 +33,7 @@ function App() {
             <Route path="/movies/:movieId">
               <MovieDetailsPage />
             </Route>
-            <Route>
-              <HomePage />
-            </Route>
+            <Redirect to="/" />
           </Switch>
         </Suspense>
         <Toast />

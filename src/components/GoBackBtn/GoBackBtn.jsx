@@ -25,19 +25,3 @@ function GoBackBtn() {
 }
 
 export default GoBackBtn;
-
-// function GoBackBtn() {
-//   const { push, goBack } = useHistory();
-//   return (
-//     <BtnWrap>
-//       <Btn onClick={() => push('/')}>
-//         <GoHome />
-//       </Btn>
-//       <Btn onClick={() => goBack()}>
-//         <RiArrowGoBackFill />
-//       </Btn>
-//     </BtnWrap>
-//   );
-// }
-
-// export default GoBackBtn;
